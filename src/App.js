@@ -1,23 +1,23 @@
-import logo from './logo.svg';
-import './App.css';
+import logo from "./logo.svg";
+import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
+import SignIn from "./login/login";
+import { ToDoTable } from "./to-do-task/taskTable";
+import Edit from "./to-do-task/edit-task";
+import NewTask from "./to-do-task/newtask";
+import Joke from "./Joke/joke";
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Router>
+        <Routes>
+          <Route exact path="/" element={<SignIn />} />
+          <Route path="/viewTask" element={<ToDoTable />} />
+          <Route path="/edit-task/:id" element={<Edit />} />
+          <Route path="/create-task" element={<NewTask />} />
+          <Route path="/jokeSpot" element={<Joke />} />
+        </Routes>
+      </Router>
     </div>
   );
 }
